@@ -7,7 +7,8 @@ import {
   Skeleton,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
-import { getMockKeyMetrics, KeyMetric } from "../services/mockData";
+import { KeyMetric } from "../services/mockData";
+import { getKeyMetrics } from "../services/api";
 
 export const KeyMetrics = () => {
   const [metrics, setMetrics] = useState<KeyMetric | null>(null);
@@ -19,7 +20,7 @@ export const KeyMetrics = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await getMockKeyMetrics();
+        const data = await getKeyMetrics();
         setMetrics(data);
       } catch (error) {
         console.error("Error fetching metrics:", error);
@@ -73,7 +74,7 @@ export const KeyMetrics = () => {
         <Text fontSize="sm" color="gray.500">
           {label}
         </Text>
-        <Skeleton isLoaded={!isLoading} speed={2}>
+        <Skeleton data-testid="skeleton" isLoaded={!isLoading} speed={2}>
           <Text fontSize="2xl" fontWeight="bold">
             {value}
           </Text>

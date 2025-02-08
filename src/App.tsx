@@ -13,6 +13,7 @@ import { Suspense, lazy } from "react";
 import { KeyMetrics } from "./components/KeyMetrics";
 import { FiDownload } from "react-icons/fi";
 import { downloadDashboard } from "./utils/downloadDashboard";
+import LazyLoadWrapper from './components/LazyLoadWrapper';
 
 // Lazy load components
 const UserGrowthChart = lazy(
@@ -78,9 +79,11 @@ function App() {
 
             {/* Data Table Section */}
             <GridItem colSpan={12}>
-              <Suspense fallback={<LoadingFallback />}>
-                <StreamsTable />
-              </Suspense>
+              <LazyLoadWrapper height="600px">
+                <Suspense fallback={<LoadingFallback />}>
+                  <StreamsTable />
+                </Suspense>
+              </LazyLoadWrapper>
             </GridItem>
           </Grid>
         </Box>

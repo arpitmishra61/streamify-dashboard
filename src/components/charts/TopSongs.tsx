@@ -9,7 +9,8 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
-import { getMockTopSongs, TopSong } from "../../services/mockData";
+import { TopSong } from "../../services/mockData";
+import { getTopSongs } from "../../services/api";
 
 const TopSongs = () => {
   const [data, setData] = useState<TopSong[]>([]);
@@ -18,7 +19,7 @@ const TopSongs = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const result = await getMockTopSongs();
+        const result = await getTopSongs();
         setData(result);
       } catch (error) {
         console.error("Error fetching top songs:", error);
@@ -74,7 +75,7 @@ const TopSongs = () => {
       <Text fontSize="lg" fontWeight="medium" mb={4}>
         Top Streamed Songs
       </Text>
-      <Skeleton isLoaded={!isLoading} height="90%" speed={2}>
+      <Skeleton data-testid="skeleton" isLoaded={!isLoading} height="90%" speed={2}>
         <ResponsiveContainer width="100%" height="90%">
           <BarChart
             data={data}

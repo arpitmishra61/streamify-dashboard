@@ -1,121 +1,130 @@
 # Streamify Dashboard
 
-A modern analytics dashboard for a fictional music streaming service, built with React, TypeScript, and Chakra UI.
+A modern analytics dashboard for streaming data visualization built with React, TypeScript, and Chakra UI.
 
 ## Features
 
-- **Key Metrics Display**: View important statistics including total users, active users, total streams, revenue, and top artist
-- **Interactive Charts**:
-  - User Growth Trends (Line Chart)
-  - Revenue Distribution (Pie Chart)
-  - Top Streamed Songs (Bar Chart)
-- **Detailed Streams Table**:
-  - Sortable columns
-  - Search functionality
-  - Responsive design
-- **Dark/Light Mode Support**
-- **Responsive Layout**
+- 📊 Real-time streaming analytics
+- 📈 Interactive data visualization with Recharts
+- 🎨 Modern UI with Chakra UI
+- 📱 Fully responsive design
+- 🔄 Dynamic data loading
+- 📄 PDF export functionality
+- ⚡ Performance optimized with:
+  - Code splitting using React.lazy()
+  - Intersection Observer for lazy loading components
+  - Skeleton loading states
 
-## Tech Stack
+## Performance Optimizations
 
-- React 18
-- TypeScript
-- Vite
-- Chakra UI
-- Recharts
-- date-fns
+### Lazy Loading with Intersection Observer
+
+The dashboard implements smart lazy loading using Intersection Observer API for better performance:
+
+```tsx
+// LazyLoadWrapper component usage
+<LazyLoadWrapper height="600px">
+  <Suspense fallback={<LoadingFallback />}>
+    <StreamsTable />
+  </Suspense>
+</LazyLoadWrapper>
+```
+
+Key features:
+- Components load only when they're about to enter the viewport (1% visibility)
+- Preloads content 100px before it becomes visible
+- Shows skeleton loading states during component loading
+- Automatically cleans up observers when components unmount
+
+### Code Splitting
+
+Components are split into smaller chunks and loaded on demand:
+
+```tsx
+// Lazy loaded components
+const StreamsTable = lazy(() => import('./components/StreamsTable'));
+const TopSongs = lazy(() => import('./components/charts/TopSongs'));
+```
 
 ## Getting Started
 
-### Prerequisites
-
-- Node.js (v16 or higher)
-- npm or yarn
-
-### Installation
-
 1. Clone the repository:
-
 ```bash
 git clone https://github.com/yourusername/streamify-dashboard.git
-cd streamify-dashboard
 ```
 
 2. Install dependencies:
-
 ```bash
+cd streamify-dashboard
 npm install
-# or
-yarn install
 ```
 
 3. Start the development server:
-
 ```bash
 npm run dev
-# or
-yarn dev
 ```
 
-4. Open your browser and navigate to `http://localhost:5173`
-
-## Development
-
-### Available Scripts
-
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run preview` - Preview production build
-- `npm run lint` - Run ESLint
-
-### Project Structure
-
-```
-streamify-dashboard/
-├── src/
-│   ├── components/
-│   │   ├── charts/
-│   │   │   ├── UserGrowthChart.tsx
-│   │   │   ├── RevenueDistribution.tsx
-│   │   │   └── TopSongs.tsx
-│   │   ├── KeyMetrics.tsx
-│   │   └── StreamsTable.tsx
-│   ├── services/
-│   │   └── mockData.ts
-│   ├── App.tsx
-│   └── main.tsx
-├── public/
-└── package.json
+4. Start the mock API server:
+```bash
+npm run server
 ```
 
-## Features in Detail
+## Testing
 
-### Key Metrics
+Run the test suite:
+```bash
+npm test
+```
 
-- Total Users: Shows the total number of registered users
-- Active Users: Users who have streamed at least one song in the last 30 days
-- Total Streams: Aggregate number of song plays
-- Revenue: Total revenue from subscriptions and advertisements
-- Top Artist: Most streamed artist in the past 30 days
+Run tests in watch mode:
+```bash
+npm run test:watch
+```
 
-### Charts
+Generate test coverage report:
+```bash
+npm run test:coverage
+```
 
-- User Growth Chart: Visualizes the growth of total and active users over time
-- Revenue Distribution: Breaks down revenue sources in a pie chart
-- Top Songs: Shows the most streamed songs in a horizontal bar chart
+## Building for Production
 
-### Data Table
+Build the application:
+```bash
+npm run build
+```
 
-- Sortable by any column
-- Search functionality across song name, artist, and user ID
-- Responsive design with horizontal scrolling on mobile devices
+Preview the production build:
+```bash
+npm run preview
+```
+
+## Technologies Used
+
+- React 18
+- TypeScript
+- Chakra UI
+- Recharts
+- Jest & Testing Library
+- Vite
+- JSON Server (for mock API)
+
+## Project Structure
+
+```
+src/
+├── components/         # React components
+├── services/          # API and data services
+├── tests/             # Test files
+├── utils/             # Utility functions
+└── App.tsx            # Root component
+```
 
 ## Contributing
 
 1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
 ## License

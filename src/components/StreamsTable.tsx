@@ -21,7 +21,8 @@ import {
   NumberDecrementStepper,
 } from "@chakra-ui/react";
 import { useState, useMemo, useEffect, ChangeEvent } from "react";
-import { getMockStreams, Stream } from "../services/mockData";
+import { Stream } from "../services/mockData";
+import { getStreams } from "../services/api";
 
 const ITEMS_PER_PAGE_OPTIONS = [10, 20, 50, 100];
 
@@ -37,7 +38,7 @@ const StreamsTable = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const result = await getMockStreams();
+        const result = await getStreams();
         setStreams(result);
       } catch (error) {
         console.error("Error fetching streams:", error);
@@ -289,36 +290,36 @@ const StreamsTable = () => {
           <Tbody>
             {isLoading
               ? // Loading skeleton rows
-                Array.from({ length: itemsPerPage }).map((_, index) => (
-                  <Tr key={`skeleton-${index}`}>
-                    <Td>
-                      <SkeletonText noOfLines={1} speed={2} />
-                    </Td>
-                    <Td>
-                      <SkeletonText noOfLines={1} speed={2} />
-                    </Td>
-                    <Td>
-                      <SkeletonText noOfLines={1} speed={2} />
-                    </Td>
-                    <Td>
-                      <SkeletonText noOfLines={1} speed={2} />
-                    </Td>
-                    <Td>
-                      <SkeletonText noOfLines={1} speed={2} />
-                    </Td>
-                  </Tr>
-                ))
+              Array.from({ length: itemsPerPage }).map((_, index) => (
+                <Tr key={`skeleton-${index}`}>
+                  <Td>
+                    <SkeletonText data-testid="skeleton" noOfLines={1} speed={2} />
+                  </Td>
+                  <Td>
+                    <SkeletonText data-testid="skeleton" noOfLines={1} speed={2} />
+                  </Td>
+                  <Td>
+                    <SkeletonText data-testid="skeleton" noOfLines={1} speed={2} />
+                  </Td>
+                  <Td>
+                    <SkeletonText data-testid="skeleton" noOfLines={1} speed={2} />
+                  </Td>
+                  <Td>
+                    <SkeletonText data-testid="skeleton" noOfLines={1} speed={2} />
+                  </Td>
+                </Tr>
+              ))
               : currentItems.map((stream) => (
-                  <Tr key={stream.id}>
-                    <Td>{stream.songName}</Td>
-                    <Td>{stream.artist}</Td>
-                    <Td>
-                      {new Date(stream.dateStreamed).toLocaleDateString()}
-                    </Td>
-                    <Td isNumeric>{stream.streamCount.toLocaleString()}</Td>
-                    <Td>{stream.userId}</Td>
-                  </Tr>
-                ))}
+                <Tr key={stream.id}>
+                  <Td>{stream.songName}</Td>
+                  <Td>{stream.artist}</Td>
+                  <Td>
+                    {new Date(stream.dateStreamed).toLocaleDateString()}
+                  </Td>
+                  <Td isNumeric>{stream.streamCount.toLocaleString()}</Td>
+                  <Td>{stream.userId}</Td>
+                </Tr>
+              ))}
           </Tbody>
         </Table>
       </TableContainer>

@@ -10,7 +10,8 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
-import { getMockUserGrowthData, UserGrowthData } from "../../services/mockData";
+import { UserGrowthData } from "../../services/mockData";
+import { getUserGrowthData } from "../../services/api";
 
 const UserGrowthChart = () => {
   const [data, setData] = useState<UserGrowthData[]>([]);
@@ -24,7 +25,7 @@ const UserGrowthChart = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const result = await getMockUserGrowthData();
+        const result = await getUserGrowthData();
         setData(result);
       } catch (error) {
         console.error("Error fetching user growth data:", error);

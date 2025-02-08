@@ -8,10 +8,8 @@ import {
   ResponsiveContainer,
   Legend,
 } from "recharts";
-import {
-  getMockRevenueDistribution,
-  RevenueSource,
-} from "../../services/mockData";
+import { RevenueSource } from "../../services/mockData";
+import { getRevenueDistribution } from "../../services/api";
 
 const COLORS = ["#3182CE", "#38A169", "#805AD5", "#DD6B20"];
 
@@ -22,7 +20,7 @@ const RevenueDistribution = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const result = await getMockRevenueDistribution();
+        const result = await getRevenueDistribution();
         setData(result);
       } catch (error) {
         console.error("Error fetching revenue distribution:", error);
