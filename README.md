@@ -2,6 +2,12 @@
 
 A modern analytics dashboard for streaming data visualization built with React, TypeScript, and Chakra UI.
 
+## Live Demo
+
+- Frontend: [Streamify Dashboard](https://github.com/arpitmishra61/streamify-dashboard)
+- Backend API: [Streamify Backend](https://github.com/arpitmishra61/streamify-backend)
+- API Endpoint: [https://streamify-backend-2nzg.onrender.com](https://streamify-backend-2nzg.onrender.com)
+
 ## Features
 
 - 📊 Real-time streaming analytics
@@ -31,6 +37,7 @@ The dashboard implements smart lazy loading using Intersection Observer API for 
 ```
 
 Key features:
+
 - Components load only when they're about to enter the viewport (1% visibility)
 - Preloads content 100px before it becomes visible
 - Shows skeleton loading states during component loading
@@ -42,46 +49,55 @@ Components are split into smaller chunks and loaded on demand:
 
 ```tsx
 // Lazy loaded components
-const StreamsTable = lazy(() => import('./components/StreamsTable'));
-const TopSongs = lazy(() => import('./components/charts/TopSongs'));
+const StreamsTable = lazy(() => import("./components/StreamsTable"));
+const TopSongs = lazy(() => import("./components/charts/TopSongs"));
 ```
 
 ## Getting Started
 
 1. Clone the repository:
+
 ```bash
-git clone https://github.com/yourusername/streamify-dashboard.git
+git clone https://github.com/arpitmishra61/streamify-dashboard.git
 ```
 
 2. Install dependencies:
+
 ```bash
 cd streamify-dashboard
 npm install
 ```
 
 3. Start the development server:
+
 ```bash
 npm run dev
 ```
 
-4. Start the mock API server:
+4. Start the mock API server (for local development):
+
 ```bash
 npm run server
 ```
 
+Note: The production version uses the deployed backend at https://streamify-backend-2nzg.onrender.com
+
 ## Testing
 
 Run the test suite:
+
 ```bash
 npm test
 ```
 
 Run tests in watch mode:
+
 ```bash
 npm run test:watch
 ```
 
 Generate test coverage report:
+
 ```bash
 npm run test:coverage
 ```
@@ -89,11 +105,13 @@ npm run test:coverage
 ## Building for Production
 
 Build the application:
+
 ```bash
 npm run build
 ```
 
 Preview the production build:
+
 ```bash
 npm run preview
 ```
@@ -118,6 +136,13 @@ src/
 ├── utils/             # Utility functions
 └── App.tsx            # Root component
 ```
+
+## API Integration
+
+The dashboard connects to a REST API backend:
+
+- Development: Local JSON Server (`http://localhost:3001`)
+- Production: Deployed backend at `https://streamify-backend-2nzg.onrender.com`
 
 ## Contributing
 
