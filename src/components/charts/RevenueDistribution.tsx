@@ -8,7 +8,7 @@ import {
   ResponsiveContainer,
   Legend,
 } from "recharts";
-import { RevenueSource } from "../../services/mockData";
+import { RevenueSource } from "../../services/apiTypes";
 import { getRevenueDistribution } from "../../services/api";
 
 const COLORS = ["#3182CE", "#38A169", "#805AD5", "#DD6B20"];

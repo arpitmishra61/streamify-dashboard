@@ -7,7 +7,7 @@ import {
   Skeleton,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
-import { KeyMetric } from "../services/mockData";
+import { KeyMetric } from "../services/apiTypes";
 import { getKeyMetrics } from "../services/api";
 
 export const KeyMetrics = () => {

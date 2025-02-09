@@ -10,7 +10,7 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
-import { UserGrowthData } from "../../services/mockData";
+import { UserGrowthData } from "../../services/apiTypes";
 import { getUserGrowthData } from "../../services/api";
 
 const UserGrowthChart = () => {

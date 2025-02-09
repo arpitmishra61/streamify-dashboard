@@ -21,7 +21,7 @@ import {
   NumberDecrementStepper,
 } from "@chakra-ui/react";
 import { useState, useMemo, useEffect, ChangeEvent } from "react";
-import { Stream } from "../services/mockData";
+import { Stream } from "../services/apiTypes";
 import { getStreams } from "../services/api";
 
 const ITEMS_PER_PAGE_OPTIONS = [10, 20, 50, 100];

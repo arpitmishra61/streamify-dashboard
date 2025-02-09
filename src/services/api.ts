@@ -1,4 +1,4 @@
-import { Stream, KeyMetric, RevenueSource, TopSong, UserGrowthData } from './mockData';
+import { Stream, KeyMetric, RevenueSource, TopSong, UserGrowthData } from './apiTypes';
 import { config } from '../config';
 
 const API_BASE_URL = config.apiBaseUrl;

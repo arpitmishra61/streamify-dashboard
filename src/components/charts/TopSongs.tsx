@@ -9,7 +9,7 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
-import { TopSong } from "../../services/mockData";
+import { TopSong } from "../../services/apiTypes";
 import { getTopSongs } from "../../services/api";
 
 const TopSongs = () => {
