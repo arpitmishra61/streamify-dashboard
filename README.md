@@ -4,9 +4,11 @@ A modern analytics dashboard for streaming data visualization built with React, 
 
 ## Live Demo
 
-- Frontend: [Streamify Dashboard](https://github.com/arpitmishra61/streamify-dashboard)
-- Backend API: [Streamify Backend](https://github.com/arpitmishra61/streamify-backend)
+- Frontend: [Streamify Dashboard](https://streamify-dashboard-v2.netlify.app/)
 - API Endpoint: [https://streamify-backend-2nzg.onrender.com](https://streamify-backend-2nzg.onrender.com)
+
+## Backend Repo
+- Link: [Streamify Backend](https://github.com/arpitmishra61/streamify-backend)
 
 ## Features
 
